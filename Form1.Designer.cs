@@ -39,13 +39,15 @@
             this.Completedlbl = new MaterialSkin.Controls.MaterialLabel();
             this.averageTimelbl = new MaterialSkin.Controls.MaterialLabel();
             this.bestTimelbl = new MaterialSkin.Controls.MaterialLabel();
-            this.exportdata = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.people1 = new MaterialSkin.Controls.MaterialButton();
             this.people2 = new MaterialSkin.Controls.MaterialButton();
             this.people3 = new MaterialSkin.Controls.MaterialButton();
             this.people4 = new MaterialSkin.Controls.MaterialButton();
             this.target = new MaterialSkin.Controls.MaterialLabel();
+            this.exportdata = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            this.behindlbl = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // stopwatch
@@ -60,6 +62,7 @@
             this.stopwatch.TabIndex = 0;
             this.stopwatch.Text = "0";
             this.stopwatch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.stopwatch.Click += new System.EventHandler(this.stopwatch_Click);
             // 
             // startBTN
             // 
@@ -69,7 +72,7 @@
             this.startBTN.Depth = 0;
             this.startBTN.HighEmphasis = true;
             this.startBTN.Icon = null;
-            this.startBTN.Location = new System.Drawing.Point(7, 355);
+            this.startBTN.Location = new System.Drawing.Point(7, 385);
             this.startBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.startBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.startBTN.Name = "startBTN";
@@ -90,7 +93,7 @@
             this.resetBTN.Depth = 0;
             this.resetBTN.HighEmphasis = true;
             this.resetBTN.Icon = null;
-            this.resetBTN.Location = new System.Drawing.Point(90, 355);
+            this.resetBTN.Location = new System.Drawing.Point(90, 385);
             this.resetBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.resetBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.resetBTN.Name = "resetBTN";
@@ -111,7 +114,7 @@
             this.CompleteBTN.Depth = 0;
             this.CompleteBTN.HighEmphasis = true;
             this.CompleteBTN.Icon = null;
-            this.CompleteBTN.Location = new System.Drawing.Point(173, 355);
+            this.CompleteBTN.Location = new System.Drawing.Point(173, 385);
             this.CompleteBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CompleteBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.CompleteBTN.Name = "CompleteBTN";
@@ -132,7 +135,7 @@
             this.pauseBTN.Depth = 0;
             this.pauseBTN.HighEmphasis = true;
             this.pauseBTN.Icon = null;
-            this.pauseBTN.Location = new System.Drawing.Point(256, 355);
+            this.pauseBTN.Location = new System.Drawing.Point(256, 385);
             this.pauseBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.pauseBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.pauseBTN.Name = "pauseBTN";
@@ -153,7 +156,7 @@
             this.unpauseBTN.Depth = 0;
             this.unpauseBTN.HighEmphasis = true;
             this.unpauseBTN.Icon = null;
-            this.unpauseBTN.Location = new System.Drawing.Point(338, 355);
+            this.unpauseBTN.Location = new System.Drawing.Point(338, 385);
             this.unpauseBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.unpauseBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.unpauseBTN.Name = "unpauseBTN";
@@ -206,38 +209,17 @@
             this.bestTimelbl.TabIndex = 9;
             this.bestTimelbl.Text = "Best Time:";
             // 
-            // exportdata
-            // 
-            this.exportdata.AutoSize = false;
-            this.exportdata.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.exportdata.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.exportdata.Depth = 0;
-            this.exportdata.HighEmphasis = true;
-            this.exportdata.Icon = null;
-            this.exportdata.Location = new System.Drawing.Point(335, 394);
-            this.exportdata.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.exportdata.MouseState = MaterialSkin.MouseState.HOVER;
-            this.exportdata.Name = "exportdata";
-            this.exportdata.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.exportdata.Size = new System.Drawing.Size(75, 36);
-            this.exportdata.TabIndex = 10;
-            this.exportdata.Text = "Export Data";
-            this.exportdata.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.exportdata.UseAccentColor = false;
-            this.exportdata.UseVisualStyleBackColor = true;
-            this.exportdata.Click += new System.EventHandler(this.exportdata_Click);
-            // 
             // materialLabel1
             // 
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            this.materialLabel1.Location = new System.Drawing.Point(6, 404);
+            this.materialLabel1.Location = new System.Drawing.Point(7, 427);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(125, 25);
+            this.materialLabel1.Size = new System.Drawing.Size(143, 25);
             this.materialLabel1.TabIndex = 12;
-            this.materialLabel1.Text = "How many people?";
+            this.materialLabel1.Text = "What step are you on?";
             // 
             // people1
             // 
@@ -247,14 +229,14 @@
             this.people1.Depth = 0;
             this.people1.HighEmphasis = true;
             this.people1.Icon = null;
-            this.people1.Location = new System.Drawing.Point(7, 435);
+            this.people1.Location = new System.Drawing.Point(7, 458);
             this.people1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people1.MouseState = MaterialSkin.MouseState.HOVER;
             this.people1.Name = "people1";
             this.people1.NoAccentTextColor = System.Drawing.Color.Empty;
             this.people1.Size = new System.Drawing.Size(67, 33);
             this.people1.TabIndex = 13;
-            this.people1.Text = "1";
+            this.people1.Text = "Step 1";
             this.people1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.people1.UseAccentColor = false;
             this.people1.UseVisualStyleBackColor = true;
@@ -268,14 +250,14 @@
             this.people2.Depth = 0;
             this.people2.HighEmphasis = true;
             this.people2.Icon = null;
-            this.people2.Location = new System.Drawing.Point(82, 435);
+            this.people2.Location = new System.Drawing.Point(82, 458);
             this.people2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people2.MouseState = MaterialSkin.MouseState.HOVER;
             this.people2.Name = "people2";
             this.people2.NoAccentTextColor = System.Drawing.Color.Empty;
             this.people2.Size = new System.Drawing.Size(67, 33);
             this.people2.TabIndex = 14;
-            this.people2.Text = "2";
+            this.people2.Text = "Step 2";
             this.people2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.people2.UseAccentColor = false;
             this.people2.UseVisualStyleBackColor = true;
@@ -289,14 +271,14 @@
             this.people3.Depth = 0;
             this.people3.HighEmphasis = true;
             this.people3.Icon = null;
-            this.people3.Location = new System.Drawing.Point(157, 436);
+            this.people3.Location = new System.Drawing.Point(157, 458);
             this.people3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people3.MouseState = MaterialSkin.MouseState.HOVER;
             this.people3.Name = "people3";
             this.people3.NoAccentTextColor = System.Drawing.Color.Empty;
             this.people3.Size = new System.Drawing.Size(67, 33);
             this.people3.TabIndex = 15;
-            this.people3.Text = "3";
+            this.people3.Text = "Step 3";
             this.people3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.people3.UseAccentColor = false;
             this.people3.UseVisualStyleBackColor = true;
@@ -310,14 +292,14 @@
             this.people4.Depth = 0;
             this.people4.HighEmphasis = true;
             this.people4.Icon = null;
-            this.people4.Location = new System.Drawing.Point(232, 436);
+            this.people4.Location = new System.Drawing.Point(232, 458);
             this.people4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people4.MouseState = MaterialSkin.MouseState.HOVER;
             this.people4.Name = "people4";
             this.people4.NoAccentTextColor = System.Drawing.Color.Empty;
             this.people4.Size = new System.Drawing.Size(67, 33);
             this.people4.TabIndex = 16;
-            this.people4.Text = "4";
+            this.people4.Text = "Step 4";
             this.people4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.people4.UseAccentColor = false;
             this.people4.UseVisualStyleBackColor = true;
@@ -335,11 +317,67 @@
             this.target.TabIndex = 17;
             this.target.Text = "Target Time: Click How Many People On Line!";
             // 
+            // exportdata
+            // 
+            this.exportdata.AutoSize = false;
+            this.exportdata.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.exportdata.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.exportdata.Depth = 0;
+            this.exportdata.HighEmphasis = true;
+            this.exportdata.Icon = null;
+            this.exportdata.Location = new System.Drawing.Point(338, 456);
+            this.exportdata.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.exportdata.MouseState = MaterialSkin.MouseState.HOVER;
+            this.exportdata.Name = "exportdata";
+            this.exportdata.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.exportdata.Size = new System.Drawing.Size(75, 36);
+            this.exportdata.TabIndex = 10;
+            this.exportdata.Text = "Export Data";
+            this.exportdata.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.exportdata.UseAccentColor = false;
+            this.exportdata.UseVisualStyleBackColor = true;
+            this.exportdata.Click += new System.EventHandler(this.exportdata_Click);
+            // 
+            // materialButton1
+            // 
+            this.materialButton1.AutoSize = false;
+            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton1.Depth = 0;
+            this.materialButton1.HighEmphasis = true;
+            this.materialButton1.Icon = null;
+            this.materialButton1.Location = new System.Drawing.Point(338, 30);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton1.Name = "materialButton1";
+            this.materialButton1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton1.Size = new System.Drawing.Size(75, 36);
+            this.materialButton1.TabIndex = 18;
+            this.materialButton1.Text = "Manual Overide";
+            this.materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton1.UseAccentColor = false;
+            this.materialButton1.UseVisualStyleBackColor = true;
+            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
+            // 
+            // behindlbl
+            // 
+            this.behindlbl.Depth = 0;
+            this.behindlbl.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.behindlbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            this.behindlbl.Location = new System.Drawing.Point(6, 344);
+            this.behindlbl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.behindlbl.Name = "behindlbl";
+            this.behindlbl.Size = new System.Drawing.Size(407, 35);
+            this.behindlbl.TabIndex = 19;
+            this.behindlbl.Text = "Behind Target:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 478);
+            this.ClientSize = new System.Drawing.Size(420, 500);
+            this.Controls.Add(this.behindlbl);
+            this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.target);
             this.Controls.Add(this.people4);
             this.Controls.Add(this.people3);
@@ -364,6 +402,7 @@
             this.ShowIcon = false;
             this.Sizable = false;
             this.TopMost = true;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
 
         }
@@ -381,11 +420,13 @@
         public MaterialSkin.Controls.MaterialButton pauseBTN;
         public MaterialSkin.Controls.MaterialButton unpauseBTN;
         public MaterialSkin.Controls.MaterialLabel Completedlbl;
-        public MaterialSkin.Controls.MaterialButton exportdata;
         public MaterialSkin.Controls.MaterialButton people1;
         public MaterialSkin.Controls.MaterialButton people2;
         public MaterialSkin.Controls.MaterialButton people3;
         public MaterialSkin.Controls.MaterialButton people4;
+        public MaterialSkin.Controls.MaterialButton exportdata;
+        public MaterialSkin.Controls.MaterialButton materialButton1;
+        public MaterialSkin.Controls.MaterialLabel behindlbl;
     }
 }
 

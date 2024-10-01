@@ -10,3 +10,15 @@ C:\Users\f\source\repos\LineProgram\obj\Debug\LineProgram.csproj.CoreCompileInpu
 C:\Users\f\source\repos\LineProgram\obj\Debug\LineProg.E592DA81.Up2Date
 C:\Users\f\source\repos\LineProgram\obj\Debug\LineProgram.exe
 C:\Users\f\source\repos\LineProgram\obj\Debug\LineProgram.pdb
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.csproj.AssemblyReference.cache
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.Form1.resources
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.Properties.Resources.resources
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.csproj.GenerateResource.cache
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.csproj.CoreCompileInputs.cache
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.exe
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProgram.pdb
+C:\Users\f\Desktop\Computer-Line-Program-main\bin\Debug\LineProgram.exe.config
+C:\Users\f\Desktop\Computer-Line-Program-main\bin\Debug\LineProgram.exe
+C:\Users\f\Desktop\Computer-Line-Program-main\bin\Debug\LineProgram.pdb
+C:\Users\f\Desktop\Computer-Line-Program-main\bin\Debug\MaterialSkin.dll
+C:\Users\f\Desktop\Computer-Line-Program-main\obj\Debug\LineProg.E592DA81.Up2Date

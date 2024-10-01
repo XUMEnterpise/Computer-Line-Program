@@ -8,30 +8,43 @@ namespace LineProgram
 {
     public partial class Form1 : MaterialSkin.Controls.MaterialForm
     {
-        
+        private int _currentStep;
+        private ManualOverrideManager _manualOverrideManager;
+        private HourlyTargetManager _hourlyTargetManager;
+        private SoundManager _soundManager;
         private StopwatchManager _stopwatchManager; //all the stopwatch stuff in the class like start and stop
         private AlarmManager _alarmManager; // alarm class
         private UIManager _uiManager; // ui class
         private PeopleManager _peopleManager; // people class, manages how many people on the line and sets the right stuff like timer , target time , etc
         private DataExporter _dataExporter; // export file class, will have functions to export all needed data to the file i make
-
+        private const int TargetCompletedCount = 15;
         private List<BuildData> _buildDataList;            //a simple list that should(i hope it works) store average times and stuff, list just makes it easier to export the stuff from the list into the text document i guess
 
         public Form1()
         {
             InitializeComponent();
-            InitializeMaterialSkin();
+            this.KeyPreview = true;
+            _soundManager = new SoundManager();
             _stopwatchManager = new StopwatchManager();
-            _alarmManager = new AlarmManager();
+            _alarmManager = new AlarmManager(_soundManager);
+            InitializeMaterialSkin();
+            
+            
             _uiManager = new UIManager(this);
             _peopleManager = new PeopleManager();
             _dataExporter = new DataExporter();
+            
+            _manualOverrideManager = new ManualOverrideManager(_stopwatchManager, _uiManager, this); // Initialize ManualOverrideManager
             _buildDataList = new List<BuildData>();
-            _stopwatchManager.Elapsed += UpdateUI; // everytime the timer is ticked, everything needed will update like lable text, this should be a faster way that manually doing it
-            _stopwatchManager.Elapsed += _alarmManager.CheckAlarm; // checks alarm, so if the alarm is needed when the stopwatch goes to a certain time lets say 3mins
-            _uiManager.SetTargetText("Click How Many People"); // couldnt be bothered repeating this over and over, so might as well make a function for it
-            _uiManager.EnableCompleteButton(false); // a issue i noticed was when the completed button was pressed, it completely ignored if how many people was pressed, gonna end up breaking the program at some point, so might as well fix it he
+
+            _stopwatchManager.Elapsed += UpdateUI;
+            _stopwatchManager.Elapsed += _alarmManager.CheckAlarm;
+            _uiManager.SetTargetText("Click How Many People");
+            _uiManager.EnableCompleteButton(false);
+            materialButton1.Enabled = false; //manual override button 
         }
+
+
         private void InitializeMaterialSkin()
         {
             
@@ -50,13 +63,16 @@ namespace LineProgram
         
         private void startBTN_Click(object sender, EventArgs e) //start stopwatch
         {
+            
             if (_peopleManager.PeopleCount == 0)
             {
-                MessageBox.Show("PICK HOW MANY PEOPLE ON LINE!"); //some error checking stops them from starting it without setting the right people count
+                MessageBox.Show("What step are you on?"); //some error checking stops them from starting it without setting the right people count
             }
             else
             {
                 _stopwatchManager.Start();
+                
+                
             }
         }
 
@@ -69,9 +85,10 @@ namespace LineProgram
         
         private void resetBTN_Click(object sender, EventArgs e)
         {
+            _soundManager.StopAlarmSound();
             if (_peopleManager.PeopleCount == 0) //reset everything
             {
-                MessageBox.Show("PICK HOW MANY PEOPLE ON LINE!");
+                MessageBox.Show("What step are you on?");
             }
             else
             {
@@ -80,25 +97,47 @@ namespace LineProgram
                 _uiManager.ResetPeopleSelection(); // makes all the buttons enabled again so can change how many people
                 _uiManager.UpdateCompletedCount(0); // sets completed to 0 no cheating
                 _uiManager.EnableCompleteButton(false); // so they cant bug the program again and make it start the timer without setting the right people count
+                resetbehindtarget();
+                disablemanual();
             }
         }
 
         
         private void unpauseBTN_Click(object sender, EventArgs e)
         {
-            _stopwatchManager.Unpause(); //unpause
+            _stopwatchManager.Resume(); //unpause
         }
 
         
         private void CompleteBTN_Click(object sender, EventArgs e)
         {
             CompleteComputer(); //complete button
+            if (_soundManager != null)
+            {
+                _soundManager.StopAlarmSound();
+            }
         }
 
-        
-        private void CompleteComputer() //everytime a build is completed, it will store the information like average time, best time  into build list, for exporting later
+
+        private void CompleteComputer()
         {
-            _stopwatchManager.CompleteLap(); // every build will be counted as a lap, so if 100 builds is done, its like 100 laps, so it knows a build has been completed
+            BehindTargetLabel();
+            double totalTime = _stopwatchManager.TotalTime; // Capture TotalTime before it is reset
+            double targetTime = _peopleManager.TargetTime;
+            if (totalTime <= targetTime && targetTime > 0)
+            {
+                
+                _soundManager.PlaySuccessLapSound(); // Play success sound for lap completion
+            }
+            else
+            {
+                
+                _soundManager.PlayFailLapSound(); // Play fail sound for lap completion
+            }
+
+            _stopwatchManager.CompleteLap(); // After using TotalTime, record the lap and reset the stopwatch
+
+            // Store the build data
             BuildData buildData = new BuildData
             {
                 Completed = _stopwatchManager.CompletedLaps,
@@ -106,35 +145,68 @@ namespace LineProgram
                 BestTime = _stopwatchManager.BestTime
             };
 
-            _buildDataList.Add(buildData); // all the data should be stored into the list above, in the future i guess the list could maybe be a database and the two programs from step 4 and step 1 could be linked, so error checking added such as features like matt suggested
-            _uiManager.UpdateCompletedCount(_stopwatchManager.CompletedLaps); // changes the completed count with how many builds /laps have been done
+            _buildDataList.Add(buildData);
+            _uiManager.UpdateCompletedCount(_stopwatchManager.CompletedLaps); // Update the completed count in the UI
         }
 
-        
+
+        private void ExportData()
+        {
+            if (_currentStep == 0)
+            {
+                MessageBox.Show("Please select a step before exporting data.", "Error");
+                return;
+            }
+
+            string datePart = DateTime.Now.ToString("dd-MM-yyyy"); // DATE
+            string fileName = $"step{_currentStep}-{datePart}.txt"; // filename
+
+            _dataExporter.Export(fileName, _buildDataList, _currentStep);
+        }
+
+
+
+
         private void exportdata_Click(object sender, EventArgs e) // exports build list information to a text file with a clean format easier to read and could be usefull to add to a excel spreadsheet and be able to see all the information for the week
         {
-            _dataExporter.ExportData(_buildDataList); // writes the list to the file
+        ExportData();
         }
 
        
         private void people1_Click(object sender, EventArgs e) //how many people buttons
         {
             SetPeople(1);
+            _peopleManager.SetTargetTimeForStep(1);
+            enablemanual();
+            _currentStep = 1;
+            _stopwatchManager.StartWithTarget(180);
         }
 
         private void people2_Click(object sender, EventArgs e)
         {
             SetPeople(2);
+            _peopleManager.SetTargetTimeForStep(2);
+            enablemanual();
+            _currentStep = 2;
+            _stopwatchManager.StartWithTarget(180);
         }
 
         private void people3_Click(object sender, EventArgs e)
         {
             SetPeople(3);
+            _peopleManager.SetTargetTimeForStep(3);
+            enablemanual();
+            _currentStep = 3;
+            _stopwatchManager.StartWithTarget(240);
         }
 
         private void people4_Click(object sender, EventArgs e)
         {
             SetPeople(4);
+            _peopleManager.SetTargetTimeForStep(4);
+            enablemanual();
+            _currentStep = 4;
+            _stopwatchManager.StartWithTarget(180);
         }
 
         
@@ -145,6 +217,68 @@ namespace LineProgram
             _uiManager.SetTargetText(targetMessage); // changes the labe to the target
             _uiManager.SetPeopleSelectionButtons(count); // the people buttons will be enabled / disabled, good for reset button when we needed to enable them and start when we want them disabled
             _uiManager.EnableCompleteButton(true); // complete button will be enabled, when its false it will be disabled and wont be able to bug the program and star it without setting people count which wouldnt set off an alarm
+        }
+
+        private void stopwatch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            _manualOverrideManager.HandleManualOverride();
+        }
+        public void BehindTargetLabel()
+        {
+            int completedCount = _stopwatchManager.CompletedLaps;
+            int behindCount = TargetCompletedCount - completedCount;
+
+            if (behindCount > 0)
+            {
+                behindlbl.Text = $"Behind Target: {behindCount}";
+                behindlbl.ForeColor = Color.Red;
+            }
+            else
+            {
+                behindlbl.Text = "On Target or Ahead";
+                behindlbl.ForeColor = Color.Green;
+            }
+        }
+
+        public void resetbehindtarget()
+        {
+            behindlbl.Text = "Behind Target: 0";
+
+        }
+        public void enablemanual()
+        {
+            materialButton1.Enabled = true;
+        }
+        public void disablemanual()
+        {
+            materialButton1.Enabled = false;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.NumPad1)
+            {
+                CompleteBTN.PerformClick(); 
+            }
+            if (e.KeyCode == Keys.NumPad2)
+            {
+                pauseBTN.PerformClick();
+            }
+            if (e.KeyCode == Keys.NumPad3)
+            {
+                unpauseBTN.PerformClick();
+            }
+            if (e.KeyCode == Keys.NumPad5)
+                {
+                resetBTN.PerformClick();
+                }
+
+
         }
     }
 }

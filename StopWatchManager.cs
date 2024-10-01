@@ -1,81 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Timers;
+using System.Linq;
 
-namespace LineProgram
+public class StopwatchManager
 {
-    // all the functions of the stopwatch
-    public class StopwatchManager
+    public event EventHandler Elapsed;
+
+    private Timer _timer;
+    private List<double> _lapTimes;  // List to store lap times
+    public double TotalTime { get; private set; } // Total elapsed time in seconds
+    public double _targetTime; // Private target time in seconds
+    private int _completedLaps; // Number of completed laps
+
+    public int CompletedLaps
     {
-        public event EventHandler Elapsed; // knows when the stopwatch is started and ticking
+        get { return _completedLaps; }
+        set { _completedLaps = value; }
+    }
 
-        private Timer _timer;
-        private DateTime _startTime; // start time of the stopwatch
-        private List<double> _lapTimes; //how long a build takes
 
-        public int PeopleCount { get; set; } // how many people on the line?
-        public double TotalTime { get; private set; } // how long it took to do a build/ allows average and best time to be caculated
-        public double AverageTime => _lapTimes.Count > 0 ? _lapTimes.Average() : 0; // the average time of the builds done
-        public double BestTime => _lapTimes.Count > 0 ? _lapTimes.Min() : 60; // minium best time , we dont want the best time being any value lower than 0, its just unrealstic and all the data will be inrevelant 
-        public int CompletedLaps { get; private set; } // total builds completed
+    public StopwatchManager()
+    {
+        _timer = new Timer(1000); // Timer fires every 1 second
+        _timer.Elapsed += TimerElapsed;
+        _timer.AutoReset = true;
+        _lapTimes = new List<double>();
+    }
 
-        public StopwatchManager()
+    // Method to start countdown with a specific target time
+    public void StartWithTarget(double targetTime)
+    {
+        _targetTime = targetTime;
+        TotalTime = 0; // Reset total time to 0
+        _timer.Start();
+    }
+
+    public void Start()
+    {
+        _timer.Start(); // Start the timer
+    }
+
+    public void Stop()
+    {
+        _timer.Stop(); // Stop the timer
+    }
+
+    public void Pause()
+    {
+        _timer.Stop(); // Pause the timer
+    }
+
+    public void Resume()
+    {
+        _timer.Start(); // Resume the timer
+    }
+
+    public void Reset()
+    {
+        _timer.Stop();     // Stop the timer
+        TotalTime = 0;     // Reset the total elapsed time
+        _lapTimes.Clear(); // Clear all recorded lap times
+        _completedLaps = 0; // Reset completed laps count
+    }
+
+    public void ResetCompletedLaps()
+    {
+        _completedLaps = 0; // Reset the completed laps
+        _lapTimes.Clear(); // Clear lap times if needed
+    }
+
+    // Method to manually set completed laps
+    public void SetCompletedLaps(int value)
+    {
+        _completedLaps = value;
+    }
+
+    // Method to complete a lap and record the time
+    public void CompleteLap()
+    {
+        _lapTimes.Add(TotalTime); // Record the completed lap time
+        TotalTime = 0; // Reset TotalTime for next lap
+        _completedLaps++; // Increment the completed laps count
+    }
+
+    // Property to calculate the average time of all completed laps
+    public double AverageTime
+    {
+        get
         {
-            _timer = new Timer(1000); // 1second 
-            _timer.Elapsed += OnTimerElapsed; 
-            _lapTimes = new List<double>();
-            Reset(); // starts when reset
-        }
+            if (_lapTimes.Count == 0)
+                return 0;
 
-        
-        private void OnTimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            TotalTime = (DateTime.Now - _startTime).TotalSeconds; // how long its taking
-            Elapsed?.Invoke(this, EventArgs.Empty); // listener so the lbls and everything updates
+            return _lapTimes.Average(); // Calculate the average of all lap times
         }
+    }
 
-        // Start  stopwatch
-        public void Start()
+    // Property to get the best time of all completed laps
+    public double BestTime
+    {
+        get
         {
-            _startTime = DateTime.Now; 
-            _timer.Start(); 
-        }
+            if (_lapTimes.Count == 0)
+                return 0;
 
-        // Pause  stopwatch
-        public void Pause()
-        {
-            _timer.Stop();
+            return _lapTimes.Min(); // Return the best (minimum) time of all lap times
         }
+    }
 
-        // Unpause stopwatch and adjust the time
-        public void Unpause()
-        {
-            _startTime = DateTime.Now.AddSeconds(-TotalTime); //if paused it will know
-            _timer.Start();
-        }
+    // Property to access the target time
+    public double TargetTime
+    {
+        get { return _targetTime; }
+    }
 
-        // reset  stopwatch
-        public void Reset()
-        {
-            Pause();
-            TotalTime = 0; 
-            _lapTimes.Clear(); 
-            CompletedLaps = 0; 
-            PeopleCount = 0; /
-            Elapsed?.Invoke(this, EventArgs.Empty); // lables will update
-        }
-
-        // will complete build and record time
-        public void CompleteLap()
-        {
-            _timer.Stop(); 
-            double lapTime = TotalTime; 
-            _lapTimes.Add(lapTime); 
-            CompletedLaps++; 
-            _startTime = DateTime.Now; 
-            TotalTime = 0; 
-            _timer.Start(); 
-        }
+    private void TimerElapsed(object sender, ElapsedEventArgs e)
+    {
+        TotalTime += 1; // Increment TotalTime by 1 second
+        Elapsed?.Invoke(this, EventArgs.Empty); // Trigger the Elapsed event
     }
 }

@@ -1,5 +1,0 @@
-Build 1:
-	Completed: 1
-	Average Time: 1.0058892
-	Best Time: 1.0058892
-

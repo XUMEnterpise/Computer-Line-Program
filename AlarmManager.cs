@@ -1,41 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Windows.Forms;
+using System;
 
-namespace LineProgram
+public class AlarmManager
 {
-    public class AlarmManager
+    private readonly SoundManager _soundManager;
+
+    public AlarmManager(SoundManager soundManager)
     {
-        private readonly Dictionary<int, int> _peopleTimeThresholds;
-        private readonly System.Media.SoundPlayer _player;
+        _soundManager = soundManager ?? throw new ArgumentNullException(nameof(soundManager), "SoundManager cannot be null");
+    }
 
-        public AlarmManager()
+    public void CheckAlarm(object sender, EventArgs e)
+    {
+        StopwatchManager stopwatchManager = sender as StopwatchManager;
+
+        if (stopwatchManager != null && stopwatchManager.TotalTime >= stopwatchManager.TargetTime)
         {
-            _peopleTimeThresholds = new Dictionary<int, int>
-            {
-                { 1, 600 }, // 10 minutes
-                { 2, 480 }, // 8 minutes
-                { 3, 240 }, // 4 minutes
-                { 4, 200 }  // 3 minutes
-            };
-            _player = new System.Media.SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), @"alarm.wav"));
+            TriggerAlarm();  // when the target is reached
         }
+    }
 
-        public void CheckAlarm(object sender, EventArgs e)
+    private void TriggerAlarm()
+    {
+        try
         {
-            StopwatchManager stopwatchManager = sender as StopwatchManager;
-
-            if (stopwatchManager == null || !_peopleTimeThresholds.ContainsKey(stopwatchManager.PeopleCount)) return;
-
-            if (stopwatchManager.TotalTime >= _peopleTimeThresholds[stopwatchManager.PeopleCount])
-            {
-                _player.PlayLooping();
-            }
+            _soundManager.PlayAlarmSound(); // play the alarm sound
+            
         }
-
-        public void StopAlarm()
+        catch (Exception ex)
         {
-            _player.Stop();
+            MessageBox.Show($"Failed to play alarm sound: {ex.Message}", "Alarm Error"); //error handling
         }
     }
 }
