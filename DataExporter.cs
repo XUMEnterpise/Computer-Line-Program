@@ -24,7 +24,7 @@ public class DataExporter
                 writer.WriteLine("Step: " + currentStep);
                 writer.WriteLine("Date: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); //found this online, makes the text document look fancy
                 writer.WriteLine("----------------------------------------");
-                writer.WriteLine($"{"Build Number",-10} {"PcID",15} {"Build",-40} {"Completed",-15} {"Average Time",-15} {"Best Time",-10}");
+                writer.WriteLine($"{"Build Number",-10} {"Build",-40} {"Completed",-15} {"Average Time",-15} {"Best Time",-10}");
                 writer.WriteLine("----------------------------------------");
 
 
@@ -32,7 +32,7 @@ public class DataExporter
                 int buildNumber = 1;
                 foreach (var buildData in data)
                 {
-                    writer.WriteLine($"{buildNumber,-10} {buildData.PcID.PadRight(15)} {buildData.Build.PadRight(40)} {buildData.Completed,-15} {Math.Round(buildData.AverageTime, 2),-15} {buildData.BestTime,-10}");
+                    writer.WriteLine($"{buildNumber,-10}  {buildData.Build.PadRight(40)} {buildData.Completed,-15} {Math.Round(buildData.AverageTime, 2),-15} {buildData.BestTime,-10}");
                     buildNumber++;
                 }
             }
