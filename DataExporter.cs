@@ -1,4 +1,5 @@
 ﻿using LineProgram;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 public class DataExporter
 {
     // Method to export data to a TXT file in the program's directory
-    public void Export(string fileName, List<BuildData> data, int currentStep)
+    public void Export(string fileName, List<BuildData> data, int currentStep, string userId)
     {
         try
         {
@@ -17,19 +18,21 @@ public class DataExporter
             // Use StreamWriter to write the data to a TXT file
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                // Write headers and general information
+                
+                writer.WriteLine($"User ID: {userId}");
                 writer.WriteLine("Export Summary");
                 writer.WriteLine("Step: " + currentStep);
                 writer.WriteLine("Date: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); //found this online, makes the text document look fancy
                 writer.WriteLine("----------------------------------------");
-                writer.WriteLine("Build Number\tCompleted\tAverage Time\tBest Time");
+                writer.WriteLine($"{"Build Number",-10} {"PcID",15} {"Build",-40} {"Completed",-15} {"Average Time",-15} {"Best Time",-10}");
                 writer.WriteLine("----------------------------------------");
+
 
                 // Writing the data for each build
                 int buildNumber = 1;
                 foreach (var buildData in data)
                 {
-                    writer.WriteLine($"{buildNumber}\t\t{buildData.Completed}\t\t{buildData.AverageTime}\t\t{buildData.BestTime}");
+                    writer.WriteLine($"{buildNumber,-10} {buildData.PcID.PadRight(15)} {buildData.Build.PadRight(40)} {buildData.Completed,-15} {Math.Round(buildData.AverageTime, 2),-15} {buildData.BestTime,-10}");
                     buildNumber++;
                 }
             }

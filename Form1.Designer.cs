@@ -48,19 +48,29 @@
             this.exportdata = new MaterialSkin.Controls.MaterialButton();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.behindlbl = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.person4 = new MaterialSkin.Controls.MaterialButton();
+            this.person3 = new MaterialSkin.Controls.MaterialButton();
+            this.person2 = new MaterialSkin.Controls.MaterialButton();
+            this.person1 = new MaterialSkin.Controls.MaterialButton();
+            this.idbox = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.buildbox = new System.Windows.Forms.ComboBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.scanBuild = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // stopwatch
             // 
             this.stopwatch.Depth = 0;
-            this.stopwatch.Font = new System.Drawing.Font("Roboto Light", 96F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.stopwatch.FontType = MaterialSkin.MaterialSkinManager.fontType.H1;
-            this.stopwatch.Location = new System.Drawing.Point(28, 24);
+            this.stopwatch.Font = new System.Drawing.Font("Roboto Light", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.stopwatch.FontType = MaterialSkin.MaterialSkinManager.fontType.H2;
+            this.stopwatch.Location = new System.Drawing.Point(6, 24);
             this.stopwatch.MouseState = MaterialSkin.MouseState.HOVER;
             this.stopwatch.Name = "stopwatch";
             this.stopwatch.Size = new System.Drawing.Size(370, 102);
             this.stopwatch.TabIndex = 0;
-            this.stopwatch.Text = "0";
+            this.stopwatch.Text = "00:00:00";
             this.stopwatch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.stopwatch.Click += new System.EventHandler(this.stopwatch_Click);
             // 
@@ -72,7 +82,7 @@
             this.startBTN.Depth = 0;
             this.startBTN.HighEmphasis = true;
             this.startBTN.Icon = null;
-            this.startBTN.Location = new System.Drawing.Point(7, 385);
+            this.startBTN.Location = new System.Drawing.Point(4, 444);
             this.startBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.startBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.startBTN.Name = "startBTN";
@@ -93,7 +103,7 @@
             this.resetBTN.Depth = 0;
             this.resetBTN.HighEmphasis = true;
             this.resetBTN.Icon = null;
-            this.resetBTN.Location = new System.Drawing.Point(90, 385);
+            this.resetBTN.Location = new System.Drawing.Point(87, 444);
             this.resetBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.resetBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.resetBTN.Name = "resetBTN";
@@ -114,7 +124,7 @@
             this.CompleteBTN.Depth = 0;
             this.CompleteBTN.HighEmphasis = true;
             this.CompleteBTN.Icon = null;
-            this.CompleteBTN.Location = new System.Drawing.Point(173, 385);
+            this.CompleteBTN.Location = new System.Drawing.Point(170, 444);
             this.CompleteBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CompleteBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.CompleteBTN.Name = "CompleteBTN";
@@ -135,7 +145,7 @@
             this.pauseBTN.Depth = 0;
             this.pauseBTN.HighEmphasis = true;
             this.pauseBTN.Icon = null;
-            this.pauseBTN.Location = new System.Drawing.Point(256, 385);
+            this.pauseBTN.Location = new System.Drawing.Point(253, 444);
             this.pauseBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.pauseBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.pauseBTN.Name = "pauseBTN";
@@ -156,7 +166,7 @@
             this.unpauseBTN.Depth = 0;
             this.unpauseBTN.HighEmphasis = true;
             this.unpauseBTN.Icon = null;
-            this.unpauseBTN.Location = new System.Drawing.Point(338, 385);
+            this.unpauseBTN.Location = new System.Drawing.Point(335, 444);
             this.unpauseBTN.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.unpauseBTN.MouseState = MaterialSkin.MouseState.HOVER;
             this.unpauseBTN.Name = "unpauseBTN";
@@ -176,45 +186,46 @@
             // Completedlbl
             // 
             this.Completedlbl.Depth = 0;
-            this.Completedlbl.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.Completedlbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
-            this.Completedlbl.Location = new System.Drawing.Point(6, 126);
+            this.Completedlbl.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.Completedlbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.Completedlbl.Location = new System.Drawing.Point(0, 85);
             this.Completedlbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.Completedlbl.Name = "Completedlbl";
-            this.Completedlbl.Size = new System.Drawing.Size(370, 82);
+            this.Completedlbl.Size = new System.Drawing.Size(430, 34);
             this.Completedlbl.TabIndex = 6;
             this.Completedlbl.Text = "Completed:";
             // 
             // averageTimelbl
             // 
             this.averageTimelbl.Depth = 0;
-            this.averageTimelbl.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.averageTimelbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
-            this.averageTimelbl.Location = new System.Drawing.Point(3, 186);
+            this.averageTimelbl.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.averageTimelbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.averageTimelbl.Location = new System.Drawing.Point(-1, 119);
             this.averageTimelbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.averageTimelbl.Name = "averageTimelbl";
-            this.averageTimelbl.Size = new System.Drawing.Size(407, 69);
+            this.averageTimelbl.Size = new System.Drawing.Size(433, 35);
             this.averageTimelbl.TabIndex = 8;
             this.averageTimelbl.Text = "Average Time:";
             // 
             // bestTimelbl
             // 
             this.bestTimelbl.Depth = 0;
-            this.bestTimelbl.Font = new System.Drawing.Font("Roboto", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.bestTimelbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H3;
-            this.bestTimelbl.Location = new System.Drawing.Point(3, 255);
+            this.bestTimelbl.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.bestTimelbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.bestTimelbl.Location = new System.Drawing.Point(-1, 154);
             this.bestTimelbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.bestTimelbl.Name = "bestTimelbl";
-            this.bestTimelbl.Size = new System.Drawing.Size(407, 61);
+            this.bestTimelbl.Size = new System.Drawing.Size(431, 33);
             this.bestTimelbl.TabIndex = 9;
             this.bestTimelbl.Text = "Best Time:";
+            this.bestTimelbl.Click += new System.EventHandler(this.bestTimelbl_Click);
             // 
             // materialLabel1
             // 
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            this.materialLabel1.Location = new System.Drawing.Point(7, 427);
+            this.materialLabel1.Location = new System.Drawing.Point(4, 486);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(143, 25);
@@ -227,9 +238,10 @@
             this.people1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.people1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.people1.Depth = 0;
+            this.people1.Enabled = false;
             this.people1.HighEmphasis = true;
             this.people1.Icon = null;
-            this.people1.Location = new System.Drawing.Point(7, 458);
+            this.people1.Location = new System.Drawing.Point(4, 517);
             this.people1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people1.MouseState = MaterialSkin.MouseState.HOVER;
             this.people1.Name = "people1";
@@ -248,9 +260,10 @@
             this.people2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.people2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.people2.Depth = 0;
+            this.people2.Enabled = false;
             this.people2.HighEmphasis = true;
             this.people2.Icon = null;
-            this.people2.Location = new System.Drawing.Point(82, 458);
+            this.people2.Location = new System.Drawing.Point(79, 517);
             this.people2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people2.MouseState = MaterialSkin.MouseState.HOVER;
             this.people2.Name = "people2";
@@ -269,9 +282,10 @@
             this.people3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.people3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.people3.Depth = 0;
+            this.people3.Enabled = false;
             this.people3.HighEmphasis = true;
             this.people3.Icon = null;
-            this.people3.Location = new System.Drawing.Point(157, 458);
+            this.people3.Location = new System.Drawing.Point(154, 517);
             this.people3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people3.MouseState = MaterialSkin.MouseState.HOVER;
             this.people3.Name = "people3";
@@ -290,9 +304,10 @@
             this.people4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.people4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.people4.Depth = 0;
+            this.people4.Enabled = false;
             this.people4.HighEmphasis = true;
             this.people4.Icon = null;
-            this.people4.Location = new System.Drawing.Point(232, 458);
+            this.people4.Location = new System.Drawing.Point(229, 517);
             this.people4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.people4.MouseState = MaterialSkin.MouseState.HOVER;
             this.people4.Name = "people4";
@@ -308,14 +323,15 @@
             // target
             // 
             this.target.Depth = 0;
-            this.target.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.target.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.target.Location = new System.Drawing.Point(6, 314);
+            this.target.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.target.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.target.Location = new System.Drawing.Point(-1, 187);
             this.target.MouseState = MaterialSkin.MouseState.HOVER;
             this.target.Name = "target";
-            this.target.Size = new System.Drawing.Size(440, 35);
+            this.target.Size = new System.Drawing.Size(459, 35);
             this.target.TabIndex = 17;
-            this.target.Text = "Target Time: Click How Many People On Line!";
+            this.target.Text = "Target Time: What Step?";
+            this.target.Click += new System.EventHandler(this.target_Click);
             // 
             // exportdata
             // 
@@ -325,7 +341,7 @@
             this.exportdata.Depth = 0;
             this.exportdata.HighEmphasis = true;
             this.exportdata.Icon = null;
-            this.exportdata.Location = new System.Drawing.Point(338, 456);
+            this.exportdata.Location = new System.Drawing.Point(383, 573);
             this.exportdata.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.exportdata.MouseState = MaterialSkin.MouseState.HOVER;
             this.exportdata.Name = "exportdata";
@@ -346,7 +362,7 @@
             this.materialButton1.Depth = 0;
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(338, 30);
+            this.materialButton1.Location = new System.Drawing.Point(383, 534);
             this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
@@ -362,20 +378,191 @@
             // behindlbl
             // 
             this.behindlbl.Depth = 0;
-            this.behindlbl.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.behindlbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            this.behindlbl.Location = new System.Drawing.Point(6, 344);
+            this.behindlbl.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.behindlbl.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.behindlbl.Location = new System.Drawing.Point(-1, 222);
             this.behindlbl.MouseState = MaterialSkin.MouseState.HOVER;
             this.behindlbl.Name = "behindlbl";
-            this.behindlbl.Size = new System.Drawing.Size(407, 35);
+            this.behindlbl.Size = new System.Drawing.Size(433, 35);
             this.behindlbl.TabIndex = 19;
             this.behindlbl.Text = "Behind Target:";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            this.materialLabel2.Location = new System.Drawing.Point(4, 556);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(217, 25);
+            this.materialLabel2.TabIndex = 20;
+            this.materialLabel2.Text = "How many people are on the line?";
+            // 
+            // person4
+            // 
+            this.person4.AutoSize = false;
+            this.person4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.person4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.person4.Depth = 0;
+            this.person4.HighEmphasis = true;
+            this.person4.Icon = null;
+            this.person4.Location = new System.Drawing.Point(229, 575);
+            this.person4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.person4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.person4.Name = "person4";
+            this.person4.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.person4.Size = new System.Drawing.Size(67, 33);
+            this.person4.TabIndex = 24;
+            this.person4.Text = "4";
+            this.person4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.person4.UseAccentColor = false;
+            this.person4.UseVisualStyleBackColor = true;
+            this.person4.Click += new System.EventHandler(this.person4_Click);
+            // 
+            // person3
+            // 
+            this.person3.AutoSize = false;
+            this.person3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.person3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.person3.Depth = 0;
+            this.person3.HighEmphasis = true;
+            this.person3.Icon = null;
+            this.person3.Location = new System.Drawing.Point(154, 575);
+            this.person3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.person3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.person3.Name = "person3";
+            this.person3.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.person3.Size = new System.Drawing.Size(67, 33);
+            this.person3.TabIndex = 23;
+            this.person3.Text = "3";
+            this.person3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.person3.UseAccentColor = false;
+            this.person3.UseVisualStyleBackColor = true;
+            this.person3.Click += new System.EventHandler(this.person3_Click);
+            // 
+            // person2
+            // 
+            this.person2.AutoSize = false;
+            this.person2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.person2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.person2.Depth = 0;
+            this.person2.HighEmphasis = true;
+            this.person2.Icon = null;
+            this.person2.Location = new System.Drawing.Point(79, 575);
+            this.person2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.person2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.person2.Name = "person2";
+            this.person2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.person2.Size = new System.Drawing.Size(67, 33);
+            this.person2.TabIndex = 22;
+            this.person2.Text = "2";
+            this.person2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.person2.UseAccentColor = false;
+            this.person2.UseVisualStyleBackColor = true;
+            this.person2.Click += new System.EventHandler(this.person2_Click);
+            // 
+            // person1
+            // 
+            this.person1.AutoSize = false;
+            this.person1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.person1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.person1.Depth = 0;
+            this.person1.HighEmphasis = true;
+            this.person1.Icon = null;
+            this.person1.Location = new System.Drawing.Point(4, 575);
+            this.person1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.person1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.person1.Name = "person1";
+            this.person1.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.person1.Size = new System.Drawing.Size(67, 33);
+            this.person1.TabIndex = 21;
+            this.person1.Text = "1";
+            this.person1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.person1.UseAccentColor = false;
+            this.person1.UseVisualStyleBackColor = true;
+            this.person1.Click += new System.EventHandler(this.person1_Click);
+            // 
+            // idbox
+            // 
+            this.idbox.Depth = 0;
+            this.idbox.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.idbox.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.idbox.Location = new System.Drawing.Point(2, 257);
+            this.idbox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.idbox.Name = "idbox";
+            this.idbox.Size = new System.Drawing.Size(433, 35);
+            this.idbox.TabIndex = 25;
+            this.idbox.Text = "ID:";
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.materialLabel3.Location = new System.Drawing.Point(2, 292);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(433, 35);
+            this.materialLabel3.TabIndex = 26;
+            this.materialLabel3.Text = "What Build Are You Building?";
+            // 
+            // buildbox
+            // 
+            this.buildbox.FormattingEnabled = true;
+            this.buildbox.Items.AddRange(new object[] {
+            "I7-3770-GTX1050TI-16GB-256GB-1TB",
+            "I7-3770-1650-16GB-512GB-1TB",
+            "R5-4600G-NOGPU-16GB-256GB-1TB",
+            "R5-5600G-NOGPU-32GB-512GB-1TB",
+            "R5-5500-GTX1050TI-16GB-512GB-1TB",
+            "R5-5500-RTX3060-32GB-512GB-1TB",
+            "I5-10400F-GTX1650-32GB-512GB-1TB",
+            "I5-10400F-RTX3060-32GB-512GB-1TB",
+            "I9-11900F-RTX3060-32GB-512GB-1TB",
+            "I9-11900F-RTX3060-32GB-1TB-2TB",
+            "i7-13700F-RTX4070-32GB-1TB",
+            "I5-10400F-RTX4060-32GB-512GB-1TB"});
+            this.buildbox.Location = new System.Drawing.Point(4, 321);
+            this.buildbox.Name = "buildbox";
+            this.buildbox.Size = new System.Drawing.Size(306, 21);
+            this.buildbox.TabIndex = 27;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
+            this.materialLabel4.Location = new System.Drawing.Point(2, 345);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(308, 26);
+            this.materialLabel4.TabIndex = 28;
+            this.materialLabel4.Text = "Scan Build ID";
+            // 
+            // scanBuild
+            // 
+            this.scanBuild.Location = new System.Drawing.Point(4, 374);
+            this.scanBuild.Name = "scanBuild";
+            this.scanBuild.Size = new System.Drawing.Size(158, 20);
+            this.scanBuild.TabIndex = 29;
+            this.scanBuild.TextChanged += new System.EventHandler(this.scanBuild_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 500);
+            this.ClientSize = new System.Drawing.Size(468, 617);
+            this.Controls.Add(this.scanBuild);
+            this.Controls.Add(this.materialLabel4);
+            this.Controls.Add(this.buildbox);
+            this.Controls.Add(this.materialLabel3);
+            this.Controls.Add(this.idbox);
+            this.Controls.Add(this.person4);
+            this.Controls.Add(this.person3);
+            this.Controls.Add(this.person2);
+            this.Controls.Add(this.person1);
+            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.behindlbl);
             this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.target);
@@ -402,8 +589,10 @@
             this.ShowIcon = false;
             this.Sizable = false;
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -427,6 +616,16 @@
         public MaterialSkin.Controls.MaterialButton exportdata;
         public MaterialSkin.Controls.MaterialButton materialButton1;
         public MaterialSkin.Controls.MaterialLabel behindlbl;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        public MaterialSkin.Controls.MaterialButton person4;
+        public MaterialSkin.Controls.MaterialButton person3;
+        public MaterialSkin.Controls.MaterialButton person2;
+        public MaterialSkin.Controls.MaterialButton person1;
+        public MaterialSkin.Controls.MaterialLabel idbox;
+        public MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private System.Windows.Forms.ComboBox buildbox;
+        public MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private System.Windows.Forms.TextBox scanBuild;
     }
 }
 

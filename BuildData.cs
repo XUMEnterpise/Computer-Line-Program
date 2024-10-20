@@ -11,6 +11,8 @@ namespace LineProgram
         public int Completed { get; set; }
         public double AverageTime { get; set; }
         public double BestTime { get; set; }
+        public string Build { get; set; }
+        public string PcID { get; set; }
     }
 }
 

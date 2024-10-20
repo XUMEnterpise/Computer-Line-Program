@@ -22,3 +22,15 @@ C:\Users\f\Desktop\Computer-Line-Program-main\obj\Release\LineProgram.csproj.Cor
 C:\Users\f\Desktop\Computer-Line-Program-main\obj\Release\LineProg.E592DA81.Up2Date
 C:\Users\f\Desktop\Computer-Line-Program-main\obj\Release\LineProgram.exe
 C:\Users\f\Desktop\Computer-Line-Program-main\obj\Release\LineProgram.pdb
+C:\Users\fwd\Desktop\Computer-Line-Program\bin\Release\LineProgram.exe.config
+C:\Users\fwd\Desktop\Computer-Line-Program\bin\Release\LineProgram.exe
+C:\Users\fwd\Desktop\Computer-Line-Program\bin\Release\LineProgram.pdb
+C:\Users\fwd\Desktop\Computer-Line-Program\bin\Release\MaterialSkin.dll
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.csproj.AssemblyReference.cache
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.Form1.resources
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.Properties.Resources.resources
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.csproj.GenerateResource.cache
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.csproj.CoreCompileInputs.cache
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProg.E592DA81.Up2Date
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.exe
+C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.pdb

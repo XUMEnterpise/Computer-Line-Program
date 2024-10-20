@@ -75,31 +75,13 @@ public class StopwatchManager
     {
         _completedLaps = value;
     }
-    public string GetFormattedTime()
-    {
-        int hours = (int)(TotalTime / 3600);          // 3600 seconds in an hour
-        int minutes = (int)((TotalTime % 3600) / 60); // 60 seconds in a minute
-        int seconds = (int)(TotalTime % 60);          // Remaining seconds
-
-        return $"{hours:D2}:{minutes:D2}:{seconds:D2}"; // Format as 00:00:00
-    }
 
     // Method to complete a lap and record the time
     public void CompleteLap()
     {
-        if(TotalTime >=30)
-        {
-            _lapTimes.Add(TotalTime); // Record the completed lap time
-            TotalTime = 0; // Reset TotalTime for next lap
-            _completedLaps++; // Increment the completed laps count
-        }
-        else
-        {
-            //invalid time
-            TotalTime = 0;
-        }
-
-        
+        _lapTimes.Add(TotalTime); // Record the completed lap time
+        TotalTime = 0; // Reset TotalTime for next lap
+        _completedLaps++; // Increment the completed laps count
     }
 
     // Property to calculate the average time of all completed laps
