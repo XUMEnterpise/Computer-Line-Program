@@ -21,6 +21,10 @@ public class PeopleManager
         TargetTime = 0;
        
     }
+    public void ResetTargetTime()
+    {
+        TargetTime = 0;
+    }
 
     // Method to calculate and set the target time for a specific step
     public void SetTargetTimeForStep(int step)
@@ -37,7 +41,7 @@ public class PeopleManager
                 baseTime = 180; // 3 minutes for step 2
                 break;
             case 3:
-                baseTime = 240; // 4 minutes for step 3
+                baseTime = 180; // 3 minutes for step 3
                 break;
             case 4:
                 baseTime = 180; // 3 minutes for step 4

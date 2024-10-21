@@ -25,7 +25,9 @@ namespace LineProgram
         
         private DataExporter _dataExporter; // export file class, will have functions to export all needed data to the file i make
         private const int TargetCompletedCount = 15;
-        private List<BuildData> _buildDataList;            //a simple list that should(i hope it works) store average times and stuff, list just makes it easier to export the stuff from the list into the text document i guess
+        private List<BuildData> _buildDataList;
+        public int peopleCount;
+        //a simple list that should(i hope it works) store average times and stuff, list just makes it easier to export the stuff from the list into the text document i guess
 
         public Form1()
         {
@@ -149,6 +151,7 @@ namespace LineProgram
         
         private void resetBTN_Click(object sender, EventArgs e)
         {
+            _peopleManager.ResetTargetTime();
             _peopleManager.ResetPeopleCount();
             // Disable control buttons
             startBTN.Enabled = false;
@@ -285,6 +288,8 @@ namespace LineProgram
        
         private void people1_Click(object sender, EventArgs e) //how many people buttons
         {
+
+
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -296,7 +301,7 @@ namespace LineProgram
                 _currentStep = 1;
                 _stopwatchManager.StartWithTarget(180);
                 int step = 1;
-                int peopleCount = 1;
+                
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.SetTargetTimeForStep(step);
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
@@ -314,7 +319,7 @@ namespace LineProgram
             else
             {
                 int step = 2;
-                int peopleCount = 2;
+                
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.SetTargetTimeForStep(step);
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
@@ -342,7 +347,7 @@ namespace LineProgram
                 _stopwatchManager.StartWithTarget(180);  // Ensure _stopwatchManager is not null here
 
                 int step = 3;
-                int peopleCount = 3;
+                
 
                 // Set people count and target time in peopleManager
                 _peopleManager.SetPeople(peopleCount);
@@ -362,6 +367,7 @@ namespace LineProgram
 
         private void people4_Click(object sender, EventArgs e)
         {
+            
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -370,7 +376,7 @@ namespace LineProgram
             else
             {
                 int step = 4;
-                int peopleCount = 4;
+                
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
                 enablemanual();
@@ -464,6 +470,7 @@ namespace LineProgram
 
         private void person2_Click(object sender, EventArgs e)
         {
+            peopleCount = 2;
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -522,6 +529,7 @@ namespace LineProgram
 
         private void person1_Click(object sender, EventArgs e)
         {
+            peopleCount = 1;
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -538,6 +546,7 @@ namespace LineProgram
 
         private void person3_Click(object sender, EventArgs e)
         {
+            peopleCount = 3;
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -554,6 +563,8 @@ namespace LineProgram
 
         private void person4_Click(object sender, EventArgs e)
         {
+
+            peopleCount = 4;
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

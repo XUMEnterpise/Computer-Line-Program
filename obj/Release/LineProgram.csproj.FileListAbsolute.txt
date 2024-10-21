@@ -34,3 +34,16 @@ C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.csproj.CoreCo
 C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProg.E592DA81.Up2Date
 C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.exe
 C:\Users\fwd\Desktop\Computer-Line-Program\obj\Release\LineProgram.pdb
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\bin\Release\LineProgram.exe.config
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\bin\Release\LineProgram.exe
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\bin\Release\LineProgram.pdb
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\bin\Release\MaterialSkin.dll
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.csproj.SuggestedBindingRedirects.cache
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.Form1.resources
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.csproj.CopyComplete
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.exe
+C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Release\LineProgram.pdb
