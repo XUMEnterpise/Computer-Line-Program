@@ -16,39 +16,68 @@ public class ManualOverrideManager
         _form = form;
     }
 
-    
+
     public void HandleManualOverride()
     {
-        //ask user staff code
+        // Ask the user for the staff code
         string staffCode = Interaction.InputBox("Enter Staff Code", "Manual Override", "");
 
-        // if staff code is what we allow
+        // If the staff code is valid
         if (IsValidStaffCode(staffCode))
         {
-            // do they want to add or remove
-            DialogResult result = MessageBox.Show("Yes for Add : No for Remove", "Manual Override",
-                                                  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            // Ask the user if they want to Add, Remove, or Enable Reset Button
+            string action = Interaction.InputBox("Enter 1 to Add, 2 to Remove, or 3 to Enable Reset Button", "Manual Override", "");
 
-            if (result == DialogResult.Yes) // Add completed builds
+            //  the actions results
+            switch (action)
             {
-                PerformAddOperation();
-            }
-            else if (result == DialogResult.No) // Remove completed builds
-            {
-                PerformRemoveOperation();
+                case "1":
+                    // Add completed builds
+                    PerformAddOperation();
+                    break;
+
+                case "2":
+                    // Remove completed builds
+                    PerformRemoveOperation();
+                    break;
+
+                case "3":
+                    // Enable the Reset Button
+                    EnableResetButton();
+                    
+                    break;
+
+                default:
+                    // If invalid 
+                    MessageBox.Show("Invalid option. Please enter 1, 2, or 3.", "Error");
+                    break;
             }
         }
         else
         {
-            // if staff code invalid, no access
+            // If staff code is invalid, show Access Denied
             MessageBox.Show("Access Denied.", "Error");
         }
+    }
+
+    private void EnableResetButton()
+    {
+        _form.resetBTN.Enabled = true;
+        _stopwatchManager.Reset();
+        _form.people1.Enabled = false;
+        _form.people2.Enabled = false;
+        _form.people3.Enabled = false;
+        _form.people4.Enabled = false;
+        _form.person1.Enabled = false;
+        _form.person2.Enabled = false;
+        _form.person3.Enabled = false;
+        _form.person4.Enabled = false;
     }
 
     // validate staff codes
     private bool IsValidStaffCode(string staffCode)
     {
-        return staffCode == "1003" || staffCode == "1016";
+        return staffCode == "1003" || staffCode == "1016"; //add more staff codes if authorized 
     }
 
     // add completed builds

@@ -31,43 +31,50 @@ namespace LineProgram
 
         public Form1()
         {
-
             InitializeComponent();
             GetValidUserID();
-            idbox.Text = $"User ID: {userId}";//for user id
+            idbox.Text = $"User ID: {userId}"; // for user id
 
-            _peopleManager = new PeopleManager();
-            this.KeyPreview = true;
+            // Initialize required components in the correct order
             _soundManager = new SoundManager();
-            _stopwatchManager = new StopwatchManager();
-            _alarmManager = new AlarmManager(_soundManager);
+            _alarmManager = new AlarmManager(_soundManager);  // AlarmManager is initialized first
+            _stopwatchManager = new StopwatchManager(_alarmManager);  // StopwatchManager receives the initialized AlarmManager
+            _peopleManager = new PeopleManager();  // PeopleManager is initialized after
+
+            this.KeyPreview = true;
             InitializeMaterialSkin();
-            
-            
+            _hourlyTargetManager = new HourlyTargetManager(_stopwatchManager, _soundManager);
+
             _uiManager = new UIManager(this);
-            
-            
-            _dataExporter = new DataExporter();
-            
-            _manualOverrideManager = new ManualOverrideManager(_stopwatchManager, _uiManager, this); // Initialize ManualOverrideManager
+            _dataExporter = new DataExporter(_uiManager);
+            _manualOverrideManager = new ManualOverrideManager(_stopwatchManager, _uiManager, this);
+
             _buildDataList = new List<BuildData>();
 
-            _stopwatchManager.Elapsed += UpdateUI;
-            _stopwatchManager.Elapsed += _alarmManager.CheckAlarm;
+            // Subscribe to the Elapsed event to trigger the UI and alarm check
+            _stopwatchManager.Elapsed += OnStopwatchElapsed;
             _uiManager.SetTargetText("Click How Many People");
             _uiManager.EnableCompleteButton(false);
-            materialButton1.Enabled = false; //manual override button 
+            materialButton1.Enabled = false;  // manual override button
 
             buildbox.SelectedIndexChanged += new EventHandler(Buildbox_SelectedIndexChanged);
             person1.Enabled = false;
             person2.Enabled = false;
             person3.Enabled = false;
             person4.Enabled = false;
+        }
 
+        private void OnStopwatchElapsed(object sender, EventArgs e)
+        {
+            // Fetch the current target time from PeopleManager
+            double targetTime = _peopleManager.TargetTime;
+            double totalTime = _stopwatchManager.TotalTime;
 
+            // Call the alarm manager to check if the alarm should be triggered
+            _alarmManager.CheckAlarm(totalTime, targetTime);
 
-
-
+            // Update the UI with the new time
+            _uiManager.UpdateStopwatchDisplay(_stopwatchManager.TotalTime, _stopwatchManager.AverageTime, _stopwatchManager.BestTime);
         }
         private void Buildbox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -151,6 +158,7 @@ namespace LineProgram
         
         private void resetBTN_Click(object sender, EventArgs e)
         {
+            resetBTN.Enabled = false;
             _peopleManager.ResetTargetTime();
             _peopleManager.ResetPeopleCount();
             // Disable control buttons
@@ -231,6 +239,7 @@ namespace LineProgram
             string selectedBuild = buildbox.SelectedItem.ToString();
             double totalTime = _stopwatchManager.TotalTime; // Capture TotalTime before it is reset
             double targetTime = _peopleManager.TargetTime;
+
             if (totalTime <= targetTime && targetTime > 0)
             {
                 
@@ -251,7 +260,9 @@ namespace LineProgram
                 AverageTime = _stopwatchManager.AverageTime,
                 BestTime = _stopwatchManager.BestTime,
                 Build = selectedBuild,
-                PcID = currentBuildID
+                PcID = currentBuildID,
+                TotalTime = totalTime,
+                TargetTime = targetTime
 
 
             };
@@ -269,13 +280,15 @@ namespace LineProgram
                 return;
             }
 
-            string datePart = DateTime.Now.ToString("dd-MM-yyyy"); // DATE
-            string fileName = $"step{_currentStep}-{datePart}.txt"; // filename
-            string selectedBuild = buildbox.SelectedItem.ToString();
+            string datePart = DateTime.Now.ToString("dd-MM-yyyy"); // Date for the file name
+            string fileName = $"step{_currentStep}-{datePart}.html"; // Save as HTML file
 
-            _dataExporter.Export(fileName, _buildDataList, _currentStep, userId);
-            
+            // Pass the people count to the export method
+            int peopleCount = _peopleManager.PeopleCount;  
+            _dataExporter.ExportAsHtml(fileName, _buildDataList, _currentStep, userId, peopleCount);
         }
+
+
 
 
 
@@ -449,10 +462,7 @@ namespace LineProgram
             {
                 unpauseBTN.PerformClick();
             }
-            if (e.KeyCode == Keys.NumPad5)
-                {
-                resetBTN.PerformClick();
-                }
+            
 
 
         }

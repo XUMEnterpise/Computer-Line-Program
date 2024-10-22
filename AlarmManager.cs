@@ -10,13 +10,12 @@ public class AlarmManager
         _soundManager = soundManager ?? throw new ArgumentNullException(nameof(soundManager), "SoundManager cannot be null");
     }
 
-    public void CheckAlarm(object sender, EventArgs e)
+    public void CheckAlarm(double totalTime, double targetTime)
     {
-        StopwatchManager stopwatchManager = sender as StopwatchManager;
-
-        if (stopwatchManager != null && stopwatchManager.TotalTime >= stopwatchManager.TargetTime)
+        // Check if the total time has reached or exceeded the adjusted target time
+        if (totalTime >= targetTime)
         {
-            TriggerAlarm();  // when the target is reached
+            TriggerAlarm();  // Trigger the alarm when the target is reached
         }
     }
 

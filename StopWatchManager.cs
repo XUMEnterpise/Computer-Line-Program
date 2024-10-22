@@ -12,6 +12,7 @@ public class StopwatchManager
     public double TotalTime { get; private set; } // Total elapsed time in seconds
     public double _targetTime; // Private target time in seconds
     private int _completedLaps; // Number of completed laps
+    private AlarmManager _alarmManager;
 
     public int CompletedLaps
     {
@@ -20,8 +21,9 @@ public class StopwatchManager
     }
 
 
-    public StopwatchManager()
+    public StopwatchManager(AlarmManager alarmManager)
     {
+        _alarmManager = alarmManager;
         _timer = new Timer(1000); // Timer fires every 1 second
         _timer.Elapsed += TimerElapsed;
         _timer.AutoReset = true;
@@ -89,9 +91,9 @@ public class StopwatchManager
     {
         if(TotalTime >=30)
         {
-            _lapTimes.Add(TotalTime); // Record the completed lap time
-            TotalTime = 0; // Reset TotalTime for next lap
-            _completedLaps++; // Increment the completed laps count
+            _lapTimes.Add(TotalTime); // Record completed lap time
+            TotalTime = 0; // Reset TotalTime
+            _completedLaps++; 
         }
         else
         {
@@ -102,7 +104,7 @@ public class StopwatchManager
         
     }
 
-    // Property to calculate the average time of all completed laps
+    //the average time of all completed laps
     public double AverageTime
     {
         get
@@ -114,7 +116,7 @@ public class StopwatchManager
         }
     }
 
-    // Property to get the best time of all completed laps
+    //best time of all completed laps
     public double BestTime
     {
         get
@@ -126,7 +128,7 @@ public class StopwatchManager
         }
     }
 
-    // Property to access the target time
+    // access the target time
     public double TargetTime
     {
         get { return _targetTime; }
@@ -134,7 +136,11 @@ public class StopwatchManager
 
     private void TimerElapsed(object sender, ElapsedEventArgs e)
     {
-        TotalTime += 1; // Increment TotalTime by 1 second
-        Elapsed?.Invoke(this, EventArgs.Empty); // Trigger the Elapsed event
+        TotalTime += 1; //  TotalTime by 1 second
+
+        // Automatically check if the alarm should be triggered using current total time and target time
+        _alarmManager.CheckAlarm(TotalTime, _targetTime);  // pass TotalTime and TargetTime here
+
+        Elapsed?.Invoke(this, EventArgs.Empty); 
     }
 }

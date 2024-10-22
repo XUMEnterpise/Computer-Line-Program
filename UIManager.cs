@@ -7,6 +7,7 @@ using System.Windows.Forms;
 public class UIManager
 {
     private Form1 _form;
+    
 
     public UIManager(Form1 form)
     {
@@ -58,11 +59,23 @@ public class UIManager
         }
         else
         {
+            string formattedAverageTime = FormatTime(averageTime);
+            string formattedBestTime = FormatTime(bestTime);//format
+
             _form.stopwatch.Text = _form._stopwatchManager.GetFormattedTime();
-            _form.averageTimelbl.Text = $"Average Time:{averageTime:F2} seconds";
-            _form.bestTimelbl.Text = $"Best Time: {bestTime:F2} seconds";
+            _form.averageTimelbl.Text = $"Average Time: {formattedAverageTime}";
+            _form.bestTimelbl.Text = $"Best Time: {formattedBestTime}"; //the new formatted times in 00:00:00
             _form.bestTimelbl.ForeColor = Color.Green;
         }
+    }
+
+    public string FormatTime(double totalSeconds) //format function so put the function "FormatTime(The Variable e.g. besttime) 
+    {
+        // Convert the total seconds to a TimeSpan
+        TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+
+        // Format 
+        return time.ToString(@"hh\:mm\:ss");
     }
 
     public void UpdateCompletedCount(int count)

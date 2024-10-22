@@ -101,6 +101,7 @@
             this.resetBTN.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.resetBTN.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.resetBTN.Depth = 0;
+            this.resetBTN.Enabled = false;
             this.resetBTN.HighEmphasis = true;
             this.resetBTN.Icon = null;
             this.resetBTN.Location = new System.Drawing.Point(87, 444);
@@ -552,7 +553,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 617);
+            this.ClientSize = new System.Drawing.Size(484, 656);
             this.Controls.Add(this.scanBuild);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.buildbox);

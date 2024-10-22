@@ -1,49 +1,97 @@
 ﻿using LineProgram;
-using Microsoft.VisualBasic.ApplicationServices;
-using System;
 using System.Collections.Generic;
+using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
 public class DataExporter
 {
-    // Method to export data to a TXT file in the program's directory
-    public void Export(string fileName, List<BuildData> data, int currentStep, string userId)
+    private UIManager _uiManager;
+
+    public DataExporter(UIManager uiManager)
+    {
+        _uiManager = uiManager;
+    }
+
+    public void ExportAsHtml(string fileName, List<BuildData> buildDataList, int currentStep, string userId,int peopleCount)
     {
         try
         {
-            // Combine the file name with the program's directory
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-
-            // Use StreamWriter to write the data to a TXT file
-            using (StreamWriter writer = new StreamWriter(filePath))
+            using (StreamWriter writer = new StreamWriter(fileName))
             {
-                
-                writer.WriteLine($"User ID: {userId}");
-                writer.WriteLine("Export Summary");
-                writer.WriteLine("Step: " + currentStep);
-                writer.WriteLine("Date: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")); //found this online, makes the text document look fancy
-                writer.WriteLine("----------------------------------------");
-                writer.WriteLine($"{"Build Number",-10} {"Build",-40} {"Completed",-15} {"Average Time",-15} {"Best Time",-10}");
-                writer.WriteLine("----------------------------------------");
+                // Start HTML structure
+                writer.WriteLine("<html>");
+                writer.WriteLine("<head>");
+                writer.WriteLine("<title>Build Export</title>");
 
+                // Add basic styles for background and formatting
+                writer.WriteLine("<style>");
+                writer.WriteLine("body { font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px; }");
+                writer.WriteLine("table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }");
+                writer.WriteLine("th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }");
+                writer.WriteLine("th { background-color: #4CAF50; color: white; }");
+                writer.WriteLine("tr:nth-child(even) { background-color: #f2f2f2; }");
+                writer.WriteLine("h1 { color: #333; }");
+                writer.WriteLine("</style>");
 
-                // Writing the data for each build
+                writer.WriteLine("</head>");
+                writer.WriteLine("<body>");
+
+                // Title and summary
+                writer.WriteLine($"<h1>Export Summary for User ID: {userId}</h1>");
+                writer.WriteLine($"<p>Step: {currentStep}</p>");
+                writer.WriteLine($"<p>People on Line: {peopleCount}</p>");
+                writer.WriteLine($"<p>Date: {DateTime.Now:dd/MM/yyyy HH:mm:ss}</p>");
+
+                // Start Table
+                writer.WriteLine("<table>");
+                writer.WriteLine("<tr>");
+                writer.WriteLine("<th>Build Number</th>");
+                writer.WriteLine("<th>Build ID</th>");
+                writer.WriteLine("<th>Total Time</th>");
+                writer.WriteLine("<th>Target Time</th>");
+                writer.WriteLine("<th>Average Time</th>");
+                writer.WriteLine("<th>Best Time</th>");
+                writer.WriteLine("</tr>");
+
+                //populate the table
                 int buildNumber = 1;
-                foreach (var buildData in data)
+                foreach (var buildData in buildDataList)
                 {
-                    writer.WriteLine($"{buildNumber,-10}  {buildData.Build.PadRight(40)} {buildData.Completed,-15} {Math.Round(buildData.AverageTime, 2),-15} {buildData.BestTime,-10}");
+                    writer.WriteLine("<tr>");
+                    writer.WriteLine($"<td>{buildNumber}</td>");
+                    writer.WriteLine($"<td>{buildData.Build}</td>");
+                    writer.WriteLine($"<td>{FormatTime(buildData.TotalTime)}</td>");
+                    writer.WriteLine($"<td>{FormatTime(buildData.TargetTime)}</td>");
+                    writer.WriteLine($"<td>{FormatTime(buildData.AverageTime)}</td>");
+                    writer.WriteLine($"<td>{FormatTime(buildData.BestTime)}</td>");
+                    writer.WriteLine("</tr>");
+
                     buildNumber++;
                 }
+
+                writer.WriteLine("</table>");
+
+                // End HTML 
+                writer.WriteLine("</body>");
+                writer.WriteLine("</html>");
             }
 
-            // Notify the user that the export was successful
-            MessageBox.Show($"Data successfully exported to: {filePath}", "Export Success");
+            // Automatically open 
+            Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+
+            MessageBox.Show($"Data successfully exported to {fileName}", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         catch (Exception ex)
         {
-            // Handle any errors that occur during the file write process
-            MessageBox.Show($"Failed to export data. Error: {ex.Message}", "Export Error");
+            MessageBox.Show($"Failed to export data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+    }
+
+    private string FormatTime(double totalSeconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(totalSeconds);
+        return time.ToString(@"hh\:mm\:ss");
     }
 }

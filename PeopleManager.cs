@@ -36,18 +36,23 @@ public class PeopleManager
         {
             case 1:
                 baseTime = 180; // 3 minutes for step 1
+                TargetTime = personCountManager.GetAdjustedTargetTime(step, PeopleCount, baseTime);
                 break;
             case 2:
                 baseTime = 180; // 3 minutes for step 2
+                TargetTime = personCountManager.GetAdjustedTargetTime(step, PeopleCount, baseTime);
                 break;
             case 3:
                 baseTime = 180; // 3 minutes for step 3
+                TargetTime = personCountManager.GetAdjustedTargetTime(step, PeopleCount, baseTime);
                 break;
             case 4:
                 baseTime = 180; // 3 minutes for step 4
+                TargetTime = personCountManager.GetAdjustedTargetTime(step, PeopleCount, baseTime);
                 break;
             default:
                 baseTime = 180; // Default target time
+                TargetTime = personCountManager.GetAdjustedTargetTime(step, PeopleCount, baseTime);
                 break;
         }
 
@@ -93,4 +98,7 @@ public class PeopleManager
     {
         stopwatchManager.StartWithTarget(TargetTime);
     }
+
+
+
 }
