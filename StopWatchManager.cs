@@ -20,6 +20,31 @@ public class StopwatchManager
         set { _completedLaps = value; }
     }
 
+    public double AverageTime
+    {
+        get
+        {
+            // Return 0 if there are no completed laps
+            if (_lapTimes.Count == 0)
+                return 0;
+
+            // Calculate the average of all lap times
+            return _lapTimes.Average();
+        }
+    }
+
+    public double BestTime
+    {
+        get
+        {
+            // Return 0 if there are no completed laps
+            if (_lapTimes.Count == 0)
+                return 0;
+
+            // Return the best (minimum) time of all lap times
+            return _lapTimes.Min();
+        }
+    }
 
     public StopwatchManager(AlarmManager alarmManager)
     {
@@ -30,53 +55,31 @@ public class StopwatchManager
         _lapTimes = new List<double>();
     }
 
-    // Method to start countdown with a specific target time
     public void StartWithTarget(double targetTime)
     {
+        if (_timer.Enabled) // Prevent double-starts
+        {
+            Console.WriteLine("[DEBUG] Timer already running; ignoring duplicate ");
+            return;
+        }
         _targetTime = targetTime;
-        TotalTime = 0; // Reset total time to 0
+        TotalTime = 0;
+        Console.WriteLine($"[DEBUG] StopwatchManager initialized with TargetTime: {_targetTime}s");
         _timer.Start();
-    }
-
-    public void Start()
-    {
-        _timer.Start(); // Start the timer
     }
 
     public void Stop()
     {
-        _timer.Stop(); // Stop the timer
-    }
-
-    public void Pause()
-    {
-        _timer.Stop(); // Pause the timer
-    }
-
-    public void Resume()
-    {
-        _timer.Start(); // Resume the timer
+        _timer.Stop();
     }
 
     public void Reset()
     {
-        _timer.Stop();     // Stop the timer
-        TotalTime = 0;     // Reset the total elapsed time
-        _lapTimes.Clear(); // Clear all recorded lap times
-        _completedLaps = 0; // Reset completed laps count
+        _timer.Stop();
+        TotalTime = 0;
+        _lapTimes.Clear();
     }
 
-    public void ResetCompletedLaps()
-    {
-        _completedLaps = 0; // Reset the completed laps
-        _lapTimes.Clear(); // Clear lap times if needed
-    }
-
-    // Method to manually set completed laps
-    public void SetCompletedLaps(int value)
-    {
-        _completedLaps = value;
-    }
     public string GetFormattedTime()
     {
         int hours = (int)(TotalTime / 3600);          // 3600 seconds in an hour
@@ -86,61 +89,53 @@ public class StopwatchManager
         return $"{hours:D2}:{minutes:D2}:{seconds:D2}"; // Format as 00:00:00
     }
 
-    // Method to complete a lap and record the time
+    private void TimerElapsed(object sender, ElapsedEventArgs e)
+    {
+        Console.WriteLine($"[DEBUG] Timer Elapsed: TotalTime = {TotalTime}s, TargetTime = {_targetTime}s");
+
+        TotalTime += 1; // Increment total time in seconds
+        _alarmManager.CheckAlarm(TotalTime, _targetTime); // Check if the alarm should trigger
+
+        Elapsed?.Invoke(this, EventArgs.Empty); // Notify listeners
+    }
+
+    public void Pause()
+    {
+        _timer.Stop(); // Pause the timer
+        Console.WriteLine("[DEBUG] Stopwatch paused.");
+    }
+
+    public void ResetCompletedLaps()
+    {
+        _completedLaps = 0; // Reset the completed laps count
+        _lapTimes.Clear(); // Clear all recorded lap times if necessary
+        Console.WriteLine("[DEBUG] Completed laps reset.");
+    }
+
+    public void Resume()
+    {
+        _timer.Start(); // Resume the timer
+        Console.WriteLine("[DEBUG] Stopwatch resumed.");
+    }
+
+    public void Start()
+    {
+        _timer.Start(); // Start the timer
+        Console.WriteLine("[DEBUG] Stopwatch started.");
+    }
+
     public void CompleteLap()
     {
-        if(TotalTime >=30)
+        if (TotalTime >= 30) // Example validation for minimum lap time
         {
             _lapTimes.Add(TotalTime); // Record completed lap time
             TotalTime = 0; // Reset TotalTime
-            _completedLaps++; 
+            _completedLaps++;
         }
         else
         {
-            //invalid time
+            // Invalid lap
             TotalTime = 0;
         }
-
-        
-    }
-
-    //the average time of all completed laps
-    public double AverageTime
-    {
-        get
-        {
-            if (_lapTimes.Count == 0)
-                return 0;
-
-            return _lapTimes.Average(); // Calculate the average of all lap times
-        }
-    }
-
-    //best time of all completed laps
-    public double BestTime
-    {
-        get
-        {
-            if (_lapTimes.Count == 0)
-                return 0;
-
-            return _lapTimes.Min(); // Return the best (minimum) time of all lap times
-        }
-    }
-
-    // access the target time
-    public double TargetTime
-    {
-        get { return _targetTime; }
-    }
-
-    private void TimerElapsed(object sender, ElapsedEventArgs e)
-    {
-        TotalTime += 1; //  TotalTime by 1 second
-
-        // Automatically check if the alarm should be triggered using current total time and target time
-        _alarmManager.CheckAlarm(TotalTime, _targetTime);  // pass TotalTime and TargetTime here
-
-        Elapsed?.Invoke(this, EventArgs.Empty); 
     }
 }

@@ -1,38 +1,32 @@
-﻿using LineProgram;
-using System;
+﻿using System;
 using System.Timers;
 
 public class HourlyTargetManager
 {
-    private int _currentTargetPerHour;  // increase every hour var
-    private const int TargetIncrease = 15; // The amount by which the target increases each hour
+    private int _currentTargetPerHour; // Cumulative target
+    private const int TargetIncrease = 15; // Increase target by this amount every hour
     private Timer _hourlyTimer;
     private StopwatchManager _stopwatchManager;
     private SoundManager _soundManager;
+    private int _lapsAtLastHourlyCheck = 0; // Tracks laps completed at the last hourly check
+
+    public int CurrentTarget => _currentTargetPerHour; // Expose current target for UI
 
     public HourlyTargetManager(StopwatchManager stopwatchManager, SoundManager soundManager)
     {
         _stopwatchManager = stopwatchManager;
         _soundManager = soundManager;
 
-        //  current target as 15 (initial target)
-        _currentTargetPerHour = 15;
+        _currentTargetPerHour = 15; // Initial hourly target
 
-        // Initialize and start the hourly timer
         InitializeHourlyTimer();
     }
 
-    public void InitializeHourlyTimer() // Timer function for every hour
+    private void InitializeHourlyTimer()
     {
-        _hourlyTimer = new Timer(3600000);  // 1 hour in milliseconds
-
-        
+        _hourlyTimer = new Timer(3600000); // 1 hour in milliseconds
         _hourlyTimer.Elapsed += HourlyCheck;
-
-        // Make sure the timer repeats every hour
         _hourlyTimer.AutoReset = true;
-
-        // Start the timer 
         _hourlyTimer.Start();
     }
 
@@ -40,39 +34,37 @@ public class HourlyTargetManager
     {
         try
         {
-            // Check if the current target was reached
-            if (_stopwatchManager.CompletedLaps >= _currentTargetPerHour)
+            // Calculate laps completed in the last hour
+            int lapsCompletedThisHour = _stopwatchManager.CompletedLaps - _lapsAtLastHourlyCheck;
+
+            if (lapsCompletedThisHour >= _currentTargetPerHour)
             {
-                _soundManager.PlaySuccessHourlyTargetSound(); // Play success sound
-                Console.WriteLine("Playing Ahead of Target Sound!"); //some debugging incase this doesnt work or any issues
+                _soundManager.PlaySuccessHourlyTargetSound();
+                Console.WriteLine("[DEBUG] On Target for the Hour");
             }
             else
             {
-                _soundManager.PlayFailHourlyTargetSound(); // Play fail sound
-                Console.WriteLine("Playing Behind of Target Sound!");
+                _soundManager.PlayFailHourlyTargetSound();
+                Console.WriteLine("[DEBUG] Behind Target for the Hour");
             }
 
-            // Increase the target for the next hour
+            // Update for the next hourly check
+            _lapsAtLastHourlyCheck = _stopwatchManager.CompletedLaps;
+
+            // Increase target for the next hour
             _currentTargetPerHour += TargetIncrease;
 
-            // Reset the hourly target
-            ResetHourlyTarget();
+            // Notify UI
+            Console.WriteLine($"[DEBUG] Hourly Check - Completed: {_stopwatchManager.CompletedLaps}, New Target: {_currentTargetPerHour}");
         }
         catch (Exception ex)
         {
-            // Handle any exceptions related to sound or timing
             Console.WriteLine($"Error during hourly check: {ex.Message}");
         }
     }
 
-    private void ResetHourlyTarget()
-    {
-        _stopwatchManager.ResetCompletedLaps(); // Reset completed laps
-    }
-
     public void StopHourlyTimer()
     {
-        // Stop and dispose of the timer to avoid memory leaks if not needed further
         _hourlyTimer.Stop();
         _hourlyTimer.Dispose();
     }

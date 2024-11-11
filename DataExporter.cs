@@ -49,6 +49,7 @@ public class DataExporter
                 writer.WriteLine("<tr>");
                 writer.WriteLine("<th>Build Number</th>");
                 writer.WriteLine("<th>Build ID</th>");
+                writer.WriteLine("<th>Completed</th>");
                 writer.WriteLine("<th>Total Time</th>");
                 writer.WriteLine("<th>Target Time</th>");
                 writer.WriteLine("<th>Average Time</th>");
@@ -62,6 +63,7 @@ public class DataExporter
                     writer.WriteLine("<tr>");
                     writer.WriteLine($"<td>{buildNumber}</td>");
                     writer.WriteLine($"<td>{buildData.Build}</td>");
+                    writer.WriteLine($"<td>{buildData.Completed}</td>");
                     writer.WriteLine($"<td>{FormatTime(buildData.TotalTime)}</td>");
                     writer.WriteLine($"<td>{FormatTime(buildData.TargetTime)}</td>");
                     writer.WriteLine($"<td>{FormatTime(buildData.AverageTime)}</td>");

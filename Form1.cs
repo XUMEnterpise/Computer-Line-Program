@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace LineProgram
     {
         private string userId;
         private int numericUserId;
+        private SKUManager _skuManager;
         private PeopleManager _peopleManager;
         private PersonCountManager personCountManager;
         private int _currentStep;
@@ -78,18 +80,23 @@ namespace LineProgram
         }
         private void Buildbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (buildbox.SelectedItem != null)
-            {
-                // Enable step buttons when a build is selected
-                people1.Enabled = false;
-                people2.Enabled = false;
-                people3.Enabled = false;
-                people4.Enabled = false;
-                person1.Enabled = true;
-                person2.Enabled = true;
-                person3.Enabled = true;
-                person4.Enabled = true;
-            }
+
+            if (buildbox.SelectedItem == null) return;
+
+            string selectedSku = buildbox.SelectedItem.ToString();
+            bool hasHighEndGpu = _skuManager.HasHighEndGpu(selectedSku);
+
+            _peopleManager.SetGpuAdjustment(hasHighEndGpu);
+            Console.WriteLine($"[DEBUG] SKU: {selectedSku}, High-End GPU Detected: {hasHighEndGpu}");
+            people1.Enabled = false;
+            people2.Enabled = false;
+            people3.Enabled = false;
+            people4.Enabled = false;
+            person1.Enabled = true;
+            person2.Enabled = true;
+            person3.Enabled = true;
+            person4.Enabled = true;
+
         }
         private void notselectbuildbox()
         {
@@ -310,14 +317,20 @@ namespace LineProgram
             }
             else
             {
-                enablemanual();
-                _currentStep = 1;
-                _stopwatchManager.StartWithTarget(180);
                 int step = 1;
-                
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.SetTargetTimeForStep(step);
+                // Use the correct TargetTime from PeopleManager
+                double targetTime = _peopleManager.TargetTime;
+                _stopwatchManager.StartWithTarget(targetTime); // Pass the calculated TargetTime
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
+                int selectedStep = step;
+                _currentStep = selectedStep;
+                Console.WriteLine($"[DEBUG] Step Selected: {selectedStep}");
+                RecalculateTargetTime();
+
+
+                enablemanual();
             }
             
         }
@@ -332,20 +345,28 @@ namespace LineProgram
             else
             {
                 int step = 2;
-                
+
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.SetTargetTimeForStep(step);
+
+                // Use the correct TargetTime from PeopleManager
+                double targetTime = _peopleManager.TargetTime;
+                _stopwatchManager.StartWithTarget(targetTime); // Pass the calculated TargetTime
+
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
+                int selectedStep = step;
+                _currentStep = selectedStep;
+                Console.WriteLine($"[DEBUG] Step Selected: {selectedStep}");
+                RecalculateTargetTime();
 
                 enablemanual();
-                _currentStep = 2;
-                _stopwatchManager.StartWithTarget(180);
             }
             
         }
 
         private void people3_Click(object sender, EventArgs e) // how many people buttons
         {
+
             if (buildbox.SelectedItem == null)
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -353,21 +374,22 @@ namespace LineProgram
             }
             else
             {
-                enablemanual();
-                _currentStep = 1;
-
-                // Start the stopwatch with 3-minute target (180 seconds)
-                _stopwatchManager.StartWithTarget(180);  // Ensure _stopwatchManager is not null here
-
                 int step = 3;
-                
 
-                // Set people count and target time in peopleManager
                 _peopleManager.SetPeople(peopleCount);
                 _peopleManager.SetTargetTimeForStep(step);
 
-                // Apply the target time to the UI
+                // Use the correct TargetTime from PeopleManager
+                double targetTime = _peopleManager.TargetTime;
+                _stopwatchManager.StartWithTarget(targetTime); // Pass the calculated TargetTime
+
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
+                int selectedStep = step;
+                _currentStep = selectedStep;
+                Console.WriteLine($"[DEBUG] Step Selected: {selectedStep}");
+                RecalculateTargetTime();
+
+                enablemanual();
 
             }
                 
@@ -389,11 +411,21 @@ namespace LineProgram
             else
             {
                 int step = 4;
-                
+
                 _peopleManager.SetPeople(peopleCount);
+                _peopleManager.SetTargetTimeForStep(step);
+
+                // Use the correct TargetTime from PeopleManager
+                double targetTime = _peopleManager.TargetTime;
+                _stopwatchManager.StartWithTarget(targetTime); // Pass the calculated TargetTime
+
                 _peopleManager.ApplyTargetTimeToUI(_uiManager);
+                int selectedStep = step;
+                _currentStep = selectedStep;
+                Console.WriteLine($"[DEBUG] Step Selected: {selectedStep}");
+                RecalculateTargetTime();
+
                 enablemanual();
-                _stopwatchManager.StartWithTarget(180);
             }
             
         }
@@ -419,8 +451,8 @@ namespace LineProgram
         }
         public void BehindTargetLabel()
         {
-            int completedCount = _stopwatchManager.CompletedLaps;
-            int behindCount = TargetCompletedCount - completedCount;
+            int completedCount = _stopwatchManager.CompletedLaps; // Total completed laps
+            int behindCount = _hourlyTargetManager.CurrentTarget - completedCount; // Compare with  target
 
             if (behindCount > 0)
             {
@@ -432,6 +464,8 @@ namespace LineProgram
                 behindlbl.Text = "On Target or Ahead";
                 behindlbl.ForeColor = Color.Green;
             }
+
+            Console.WriteLine($"[DEBUG] Completed Count: {completedCount}, Target Count: {_hourlyTargetManager.CurrentTarget}, Behind Count: {behindCount}");
         }
 
         public void resetbehindtarget()
@@ -474,8 +508,74 @@ namespace LineProgram
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            PopulateSkuComboBox();
+            InitializeSkuManager();
 
+        }
+
+        private List<string> LoadSkusFromFile(string filePath)
+        {
+            var skuList = new List<string>();
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    string[] lines = File.ReadAllLines(filePath);
+                    foreach (var line in lines)
+                    {
+                        if (!string.IsNullOrWhiteSpace(line))
+                        {
+                            skuList.Add(line.Trim());
+                        }
+                    }
+                    Console.WriteLine($"[DEBUG] Loaded {skuList.Count} SKUs from file: {filePath}");
+                }
+                else
+                {
+                    Console.WriteLine($"[ERROR] SKU file not found: {filePath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[ERROR] Failed to load SKUs: {ex.Message}");
+            }
+            return skuList;
+        }
+
+        private void PopulateSkuComboBox()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SKUs.csv"); // Adjust file name if needed
+            List<string> skuList = LoadSkusFromFile(filePath);
+
+            if (skuList.Count > 0)
+            {
+                buildbox.Items.Clear();
+                foreach (var sku in skuList)
+                {
+                    buildbox.Items.Add(sku);
+                }
+                Console.WriteLine($"[DEBUG] SKU ComboBox populated with {skuList.Count} items.");
+            }
+            else
+            {
+                Console.WriteLine("[ERROR] No SKUs available to populate ComboBox.");
+            }
+        }
+
+        private void InitializeSkuManager()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SKUs.csv");
+            List<string> skuList = LoadSkusFromFile(filePath);
+
+            if (skuList.Count > 0)
+            {
+                _skuManager = new SKUManager(skuList);
+                Console.WriteLine("[DEBUG] SKUManager initialized.");
+            }
+            else
+            {
+                Console.WriteLine("[ERROR] Failed to initialize SKUManager: No SKUs loaded.");
+            }
         }
 
         private void person2_Click(object sender, EventArgs e)
@@ -492,6 +592,10 @@ namespace LineProgram
                 _uiManager.DisableOtherPersonButtons(2);
                 _peopleManager.SetPeople(2);
                 _peopleManager.SetTargetTimeForStep(_currentStep);
+                int selectedPeopleCount = peopleCount;
+                _peopleManager.SetPeople(selectedPeopleCount);
+                Console.WriteLine($"[DEBUG] People Count Selected: {selectedPeopleCount}");
+                RecalculateTargetTime(); // Recalculate 
             }
         }
 
@@ -544,13 +648,17 @@ namespace LineProgram
             {
                 MessageBox.Show("Please select a build ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
+            }   
             else
             {
                 UpdateTargetTimeAndEnableButtons(1);  // Person 1 selected
                 _uiManager.DisableOtherPersonButtons(1);
                 _peopleManager.SetPeople(1);
                 _peopleManager.SetTargetTimeForStep(_currentStep);
+                int selectedPeopleCount = peopleCount;
+                _peopleManager.SetPeople(selectedPeopleCount);
+                Console.WriteLine($"[DEBUG] People Count Selected: {selectedPeopleCount}");
+                RecalculateTargetTime(); // Recalculate 
             }
         }
 
@@ -568,6 +676,10 @@ namespace LineProgram
                 _uiManager.DisableOtherPersonButtons(3);
                 _peopleManager.SetPeople(3);
                 _peopleManager.SetTargetTimeForStep(_currentStep);
+                int selectedPeopleCount = peopleCount;
+                _peopleManager.SetPeople(selectedPeopleCount);
+                Console.WriteLine($"[DEBUG] People Count Selected: {selectedPeopleCount}");
+                RecalculateTargetTime(); // Recalculate 
             }
         }
 
@@ -586,6 +698,10 @@ namespace LineProgram
                 _uiManager.DisableOtherPersonButtons(4);
                 _peopleManager.SetPeople(4);
                 _peopleManager.SetTargetTimeForStep(_currentStep);
+                int selectedPeopleCount = peopleCount;
+                _peopleManager.SetPeople(selectedPeopleCount);
+                Console.WriteLine($"[DEBUG] People Count Selected: {selectedPeopleCount}");
+                RecalculateTargetTime(); // Recalculate 
             }
         }
 
@@ -598,6 +714,19 @@ namespace LineProgram
                 scanBuild.Clear();
             }
             
+        }
+
+        private void RecalculateTargetTime()
+        {
+            if (_peopleManager.PeopleCount > 0 && _currentStep > 0)
+            {
+                _peopleManager.SetTargetTimeForStep(_currentStep);
+                _peopleManager.ApplyTargetTimeToUI(_uiManager);
+            }
+            else
+            {
+                Console.WriteLine("[DEBUG] Waiting for valid PeopleCount and Step before recalculating TargetTime.");
+            }
         }
     }
 }

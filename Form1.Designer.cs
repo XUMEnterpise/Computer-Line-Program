@@ -511,22 +511,9 @@
             // buildbox
             // 
             this.buildbox.FormattingEnabled = true;
-            this.buildbox.Items.AddRange(new object[] {
-            "I7-3770-GTX1050TI-16GB-256GB-1TB",
-            "I7-3770-1650-16GB-512GB-1TB",
-            "R5-4600G-NOGPU-16GB-256GB-1TB",
-            "R5-5600G-NOGPU-32GB-512GB-1TB",
-            "R5-5500-GTX1050TI-16GB-512GB-1TB",
-            "R5-5500-RTX3060-32GB-512GB-1TB",
-            "I5-10400F-GTX1650-32GB-512GB-1TB",
-            "I5-10400F-RTX3060-32GB-512GB-1TB",
-            "I9-11900F-RTX3060-32GB-512GB-1TB",
-            "I9-11900F-RTX3060-32GB-1TB-2TB",
-            "i7-13700F-RTX4070-32GB-1TB",
-            "I5-10400F-RTX4060-32GB-512GB-1TB"});
             this.buildbox.Location = new System.Drawing.Point(4, 321);
             this.buildbox.Name = "buildbox";
-            this.buildbox.Size = new System.Drawing.Size(306, 21);
+            this.buildbox.Size = new System.Drawing.Size(351, 21);
             this.buildbox.TabIndex = 27;
             // 
             // materialLabel4
@@ -553,7 +540,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 656);
+            this.ClientSize = new System.Drawing.Size(500, 695);
             this.Controls.Add(this.scanBuild);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.buildbox);

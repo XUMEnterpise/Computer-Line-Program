@@ -47,3 +47,15 @@ C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\bin\Debug\Mater
 C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Debug\LineProgram.csproj.CopyComplete
 C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Debug\LineProgram.exe
 C:\Users\Administrator\Desktop\Keanan Code\Computer-Line-Program\obj\Debug\LineProgram.pdb
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\bin\Debug\LineProgram.exe.config
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\bin\Debug\LineProgram.exe
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\bin\Debug\LineProgram.pdb
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\bin\Debug\MaterialSkin.dll
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.csproj.AssemblyReference.cache
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.Form1.resources
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.Properties.Resources.resources
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.csproj.GenerateResource.cache
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.csproj.CoreCompileInputs.cache
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProg.E592DA81.Up2Date
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.exe
+C:\Users\fwd\Desktop\gfithub\Computer-Line-Program\obj\Debug\LineProgram.pdb

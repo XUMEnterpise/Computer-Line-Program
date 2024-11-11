@@ -1,54 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\",
+  "WorkspaceRootPath": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\soundmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:soundmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\personcountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:personcountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\stopwatchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:stopwatchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\alarmmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:alarmmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\manualoverridemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:manualoverridemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\builddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:builddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\v3\\computer-line-program\\dataexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:dataexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\gfithub\\computer-line-program\\alarmmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:alarmmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\gfithub\\computer-line-program\\stopwatchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:stopwatchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\gfithub\\computer-line-program\\personcountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:personcountmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\gfithub\\computer-line-program\\skus.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:skus.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|c:\\users\\fwd\\desktop\\gfithub\\computer-line-program\\skumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:skumanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\peoplemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\peoplemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:peoplemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\hourlytargetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D917980-A45B-4C0F-8729-DBF061820385}|LineProgram.csproj|solutionrelative:hourlytargetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,134 +46,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAFACAAAAAAAAAAAowJwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:40:50.123Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DataExporter.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\DataExporter.cs",
-              "RelativeDocumentMoniker": "DataExporter.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\DataExporter.cs",
-              "RelativeToolTip": "DataExporter.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAWwBAAAAB7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:45.973Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BuildData.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\BuildData.cs",
-              "RelativeDocumentMoniker": "BuildData.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\BuildData.cs",
-              "RelativeToolTip": "BuildData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T21:14:21.966Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ManualOverrideManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\ManualOverrideManager.cs",
-              "RelativeDocumentMoniker": "ManualOverrideManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\ManualOverrideManager.cs",
-              "RelativeToolTip": "ManualOverrideManager.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAcwEkAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:47.37Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "AlarmManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\AlarmManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\AlarmManager.cs",
               "RelativeDocumentMoniker": "AlarmManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\AlarmManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\AlarmManager.cs",
               "RelativeToolTip": "AlarmManager.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAA5wBIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T21:14:25.222Z",
+              "WhenOpened": "2024-11-11T00:18:51.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "StopWatchManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\StopWatchManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\StopWatchManager.cs",
               "RelativeDocumentMoniker": "StopWatchManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\StopWatchManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\StopWatchManager.cs",
               "RelativeToolTip": "StopWatchManager.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAqwI8AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAUwD0AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:49.643Z",
+              "WhenOpened": "2024-11-11T00:18:32.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "PersonCountManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\PersonCountManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\PersonCountManager.cs",
               "RelativeDocumentMoniker": "PersonCountManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\PersonCountManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\PersonCountManager.cs",
               "RelativeToolTip": "PersonCountManager.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAgwAgAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:37:51.12Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UIManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\UIManager.cs",
-              "RelativeDocumentMoniker": "UIManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\UIManager.cs",
-              "RelativeToolTip": "UIManager.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAkwAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:51.22Z",
+              "WhenOpened": "2024-11-11T00:18:29.568Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SoundManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\SoundManager.cs",
-              "RelativeDocumentMoniker": "SoundManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\SoundManager.cs",
-              "RelativeToolTip": "SoundManager.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAM0CAAAAAAAAAAAQwNQCAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:49.055Z",
+              "WhenOpened": "2024-10-20T16:40:50.123Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-30T21:13:45.206Z",
@@ -193,28 +114,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PeopleManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\PeopleManager.cs",
-              "RelativeDocumentMoniker": "PeopleManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\PeopleManager.cs",
-              "RelativeToolTip": "PeopleManager.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAuwDYAAABjAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "SKUManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\SKUManager.cs",
+              "RelativeDocumentMoniker": "SKUManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\SKUManager.cs",
+              "RelativeToolTip": "SKUManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T16:33:17.727Z",
+              "WhenOpened": "2024-11-10T23:38:50.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HourlyTargetManager.cs",
-              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\HourlyTargetManager.cs",
-              "RelativeDocumentMoniker": "HourlyTargetManager.cs",
-              "ToolTip": "C:\\Users\\fwd\\Desktop\\V3\\Computer-Line-Program\\HourlyTargetManager.cs",
-              "RelativeToolTip": "HourlyTargetManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SKUS.csv",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\SKUS.csv",
+              "RelativeDocumentMoniker": "SKUS.csv",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\SKUS.csv",
+              "RelativeToolTip": "SKUS.csv",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2024-11-10T23:36:45.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\UIManager.cs",
+              "RelativeDocumentMoniker": "UIManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\UIManager.cs",
+              "RelativeToolTip": "UIManager.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAApwEAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:59:46.715Z",
+              "WhenOpened": "2024-10-20T15:59:51.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PeopleManager.cs",
+              "DocumentMoniker": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\PeopleManager.cs",
+              "RelativeDocumentMoniker": "PeopleManager.cs",
+              "ToolTip": "C:\\Users\\fwd\\Desktop\\gfithub\\Computer-Line-Program\\PeopleManager.cs",
+              "RelativeToolTip": "PeopleManager.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAuwCoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T16:33:17.727Z",
               "EditorCaption": ""
             }
           ]
